@@ -223,7 +223,7 @@ router.get("/mascotas/getMyPets/:email", async (req, res) => {
 
 router.get("/mascotas/mascotasPerdidas", async (req, res) => {
   const mascotasCercanas = [];
-  console.log('MASCOTAS CERCANAS:', req.headers.latitude)
+  console.log('MASCOTAS CERCANAS:', req.headers.distanceslider)
   await Mascota.findAll({
     where: { status: { [Op.in]: [1, 3] } },
   })
@@ -237,7 +237,7 @@ router.get("/mascotas/mascotasPerdidas", async (req, res) => {
             j.lngPerdida
           );
 
-          if (distance < 50 /* req.headers.distanceslider */) {
+          if (distance <   req.headers.distanceslider ) {
                        console.log(j.nombre, "esta cerca!");
              mascotasCercanas.push(j);
           } else {
