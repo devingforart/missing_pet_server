@@ -238,8 +238,8 @@ router.get("/mascotas/mascotasPerdidas", async (req, res) => {
           );
 
           if (distance < req.headers.distanceslider) {
-            /*             console.log(j.nombre, "esta cerca!");
-             */ mascotasCercanas.push(j);
+                       console.log(j.nombre, "esta cerca!");
+             mascotasCercanas.push(j);
           } else {
             console.log("aun no hay mascotas cerca");
           }
@@ -248,9 +248,9 @@ router.get("/mascotas/mascotasPerdidas", async (req, res) => {
         });
         console.log(
           "MASCOTAS ENCONTRADAS: ",
-          mascotasCercanas.length
-          /*           mascotasCercanas
-           */
+          mascotasCercanas.length,
+                  mascotasCercanas
+     
         );
         if (mascotasCercanas.length > 0) {
           return res.status(200).send({ data: mascotasCercanas });
@@ -258,7 +258,7 @@ router.get("/mascotas/mascotasPerdidas", async (req, res) => {
           Mascota.findAll({
             where: { status: { [Op.in]: [1, 3] } },
           }).then(function (mascotas) {
-            console.log("MASCOTAS NO ENCCONTRADA: " /* mascotasCercanas */);
+            console.log("NO HAY MASCOTAS PERDIDAS CERCA TUYO.: " /* mascotasCercanas */);
             return res.status(200).send({ data: mascotasCercanas });
           });
         }
