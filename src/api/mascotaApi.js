@@ -223,6 +223,7 @@ router.get("/mascotas/getMyPets/:email", async (req, res) => {
 
 router.get("/mascotas/mascotasPerdidas", async (req, res) => {
   const mascotasCercanas = [];
+  console.log('MASCOTAS CERCANAS:', req.headers.latitude)
   await Mascota.findAll({
     where: { status: { [Op.in]: [1, 3] } },
   })
