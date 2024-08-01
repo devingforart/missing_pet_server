@@ -215,7 +215,7 @@ router.get("/mascotas/getMyPets/:email", async (req, res) => {
     },
   }).then(
     await function (mascotas) {
-      console.log("user Pets", mascotas.length);
+      console.log("user Pets", mascotas.length, mascotas);
       return res.status(200).send({ data: mascotas });
     }
   );
